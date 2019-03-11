@@ -5,9 +5,14 @@ import './App.css';
 
 const App = () => {
   const { current: socket } = useRef(io('http://localhost:8000'));
+  const contentRef = useRef(null);
   const [text, setText] = useState('');
   const [messages, setMessage] = useState([]);
-  const handleBtnClick = () => text && socket.emit('chat message', text);
+  const handleBtnClick = () => socket.emit('chat message', text);
+
+  useEffect(() => {
+    contentRef.current.scrollTop = 9999;
+  }, [messages.length]);
 
   useEffect(() => {
     try {
@@ -33,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" ref={contentRef}>
         {messages.map((item, index) => {
           return (
             <div key={index} style={getMessagesStyle(index)}>
@@ -41,9 +46,13 @@ const App = () => {
             </div>
           );
         })}
-        <input type="text" value={text} onChange={e => setText(e.target.value)} />
-        <button onClick={handleBtnClick}>{'Send'}</button>
       </header>
+      <footer className="App-footer">
+        <input type="text" value={text} onChange={e => setText(e.target.value)} />
+        <button disabled={!text.trim()} onClick={handleBtnClick}>
+          {'Send'}
+        </button>
+      </footer>
     </div>
   );
 };

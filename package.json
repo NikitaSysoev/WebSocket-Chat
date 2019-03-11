@@ -1,11 +1,11 @@
 {
-  "name": "websocket_chat",
-  "version": "1.0.0",
+  "name": "react_intro",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "express": "^4.16.4",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-scripts": "^2.1.8",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0"
