@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import './App.css';
 
 const App = () => {
-  const { current: socket } = useRef(io('http://localhost:8000'));
+  const { current: socket } = useRef(io('ws://localhost:8000'));
   const contentRef = useRef(null);
   const [text, setText] = useState('');
   const [messages, setMessage] = useState([]);
