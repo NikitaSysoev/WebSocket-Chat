@@ -18,7 +18,7 @@ const App = () => {
     try {
       socket.open();
       socket.on('chat message', msg => {
-        setMessage(prevMessages => [...prevMessages, msg]);
+        setMessage(messages => [...messages, msg]);
         setText('');
       });
     } catch (error) {
